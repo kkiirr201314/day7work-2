@@ -6,8 +6,9 @@ var playerSilver = 10
 fun main() {
     placeOrder("shandy ,Dragon's Breath, 5.91")
 }
-fun performurchase() {
+fun performPurchase(price: Double) {
     displayBalance()
+    println("Purchasing item for $price")
 }
 
 private  fun displayBalance() {
@@ -45,7 +46,7 @@ private  fun placeOrder(menuData: String){
     val (type,name,price) = menuData.split(',')
     val message = "Madrigal 買了一杯 $name ($type) 花了 $price."
     println(message)
-    performurchase()
+    performPurchase(price)
 
     //  val phrase = "Ah, dlicious $name!"
     //  println("Madrigal 驚呼道: ${toDragonSpeak(phrase)}")
