@@ -4,26 +4,26 @@ const val  TAVERN_NAME = "Taerny's Folly"
 
 var playerGold = 10
 var playerSilver = 10
+var totalPurse = playerGold + (playerSilver/100.00)
 
 fun main() {
+    placeOrder("shandy ,Dragon's Breath, 5.91")
+    println("----------------------------------------------------")
     placeOrder("shandy ,Dragon's Breath, 5.91")
 }
 fun performPurchase(price: Double) {
     displayBalance()
-    val totalPurse = playerGold + (playerSilver / 100.0)
-   // println("錢包總金額: $totalPurse")
-    println("購買品項共花了 $price")
-    val remainingBalance = totalPurse - price
-    println("餘額: ${"%.2f".format(remainingBalance)}")
-
-
-    val remainingGold = remainingBalance.toInt()
-    val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
-    playerGold = remainingGold
-    playerSilver = remainingSilver
-    displayBalance()
+    println("玩家錢包總餘額: ${"%.2f".format(totalPurse)}")
+    if (totalPurse >= price) {
+        println("購買品項需要: $price")
+        totalPurse = totalPurse - price
+        playerGold = playerGold - "%.0f".format(price).toInt()
+        playerSilver = (totalPurse % 1 * 100).roundToInt()
+        println("玩家購買後錢包餘額: Gold: $playerGold , Silver: $playerSilver")
+    } else {
+        println("抱歉，錢包裡面錢不夠了！！！")
+    }
 }
-
 private  fun displayBalance() {
     println("玩家錢包餘額: Gold: $playerGold , Silver: $playerSilver")
 }
