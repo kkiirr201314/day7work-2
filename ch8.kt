@@ -2,30 +2,29 @@ import kotlin.math.roundToInt
 
 const val  TAVERN_NAME = "Taerny's Folly"
 
-var playerGold = 10
-var playerSilver = 10
-var totalPurse = playerGold + (playerSilver/100.00)
+var playerGold = 0
+var playerSilver = 0
+var playerDrogonCoin = 5
+var totalPurse = playerDrogonCoin * 1.43
 
 fun main() {
-    placeOrder("shandy ,Dragon's Breath, 5.91")
-    println("----------------------------------------------------")
     placeOrder("shandy ,Dragon's Breath, 5.91")
 }
 fun performPurchase(price: Double) {
     displayBalance()
-    println("玩家錢包總餘額: ${"%.2f".format(totalPurse)}")
+    println("玩家錢包總餘額: ${"%.2f".format(totalPurse)} 個金幣")
     if (totalPurse >= price) {
-        println("購買品項需要: $price")
-        totalPurse = totalPurse - price
+        println("購買品項需要: $price 個金幣")
+        totalPurse = (totalPurse - price)/1.43
         playerGold = playerGold - "%.0f".format(price).toInt()
         playerSilver = (totalPurse % 1 * 100).roundToInt()
-        println("玩家購買後錢包餘額: Gold: $playerGold , Silver: $playerSilver")
+        println("玩家購買後錢包餘額: dragon: ${"%.4f".format(totalPurse)}")
     } else {
         println("抱歉，錢包裡面錢不夠了！！！")
     }
 }
 private  fun displayBalance() {
-    println("玩家錢包餘額: Gold: $playerGold , Silver: $playerSilver")
+    println("玩家錢包餘額: dragan: $playerDrogonCoin")
 }
 
 
