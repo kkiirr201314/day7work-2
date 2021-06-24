@@ -12,7 +12,7 @@ fun performPurchase(price: Double) {
    // println("錢包總金額: $totalPurse")
     println("購買品項共花了 $price")
     val remainingBalance = totalPurse - price
-    println("餘額: $remainingBalance")
+    println("餘額: ${"%.2f".format(remainingBalance)}")
 }
 
 private  fun displayBalance() {
